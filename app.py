@@ -10,10 +10,10 @@ app = Flask(__name__)
 
 app.secret_key = 'retailBanking'
 
-app.config['MYSQL_USER'] = 'lqcmqxrcpvvcee'
-app.config['MYSQL_PASSWORD'] = '327ecb19347a617955a4a9c31fe1019ac6df4587b8d0084c731d794e398eac4c'
-app.config['MYSQL_HOST'] = 'ec2-50-17-90-177.compute-1.amazonaws.com'
-app.config['MYSQL_DB'] = 'd34jjpe72o5f0p'
+app.config['MYSQL_USER'] = 'u540517340_tcs'
+app.config['MYSQL_PASSWORD'] = 'tcs1234'
+app.config['MYSQL_HOST'] = 'sql284.main-hosting.eu'
+app.config['MYSQL_DB'] = 'u540517340_tcs'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql = MySQL(app)
