@@ -698,7 +698,7 @@ def reportdate():
             elif(field == 'withdraw'):
                 cur.execute("SELECT id,customerID,accountID,accountType,amount,withdrawDate from withdraw where withdrawDate BETWEEN %s AND %s", [ fromDate, toDate ])
             elif(field == 'transfer'):
-                cur.execute("SELECT id,customerID,amount,sourceaccountid,targetaccountid,transactionDate from transaction where transactionDate BETWEEN %s AND %s", [ fromDate, toDate ])
+                cur.execute("SELECT id,customerID,amount,sourceAccType,targetAccType,sourceaccountid,targetaccountid,transactionDate from transaction where transactionDate BETWEEN %s AND %s", [ fromDate, toDate ])
             check = cur.fetchall()
             if(check):
                 return jsonify(check)
