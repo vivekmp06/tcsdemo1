@@ -10,10 +10,10 @@ app = Flask(__name__)
 
 app.secret_key = 'retailBanking'
 
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_DB'] = 'retailbank1'
+app.config['MYSQL_USER'] = 'lqcmqxrcpvvcee'
+app.config['MYSQL_PASSWORD'] = '327ecb19347a617955a4a9c31fe1019ac6df4587b8d0084c731d794e398eac4c'
+app.config['MYSQL_HOST'] = 'ec2-50-17-90-177.compute-1.amazonaws.com'
+app.config['MYSQL_DB'] = 'd34jjpe72o5f0p'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql = MySQL(app)
@@ -86,7 +86,6 @@ def custlogin():
                     session['check_in']    = True
                     session['name']     = username
                     session['user']     = name
-                    flash('Logged In Successfully!!!', 'success')
                     return redirect(url_for('custdashboard'))
                 else:
                     flash('Invalid Login', 'danger')
@@ -102,6 +101,7 @@ def custlogin():
 def custlogout():
     session.pop('check_in',False)
     session.pop('name',False)
+    flash('Logged Out Successfully!!!','success')
     return redirect(url_for('home'))
 
 #dashboard
@@ -695,11 +695,11 @@ def reportdate():
             elif(field == 'account'):
                 cur.execute("SELECT * from account where createAt BETWEEN %s AND %s", [ fromDate, toDate ])
             elif(field == 'deposit'):
-                cur.execute("SELECT * from deposit where depositDate BETWEEN %s AND %s", [ fromDate, toDate ])
+                cur.execute("SELECT id,customerID,accountID,accountType,amount,depositDate from deposit where depositDate BETWEEN %s AND %s", [ fromDate, toDate ])
             elif(field == 'withdraw'):
-                cur.execute("SELECT * from withdraw where withdrawDate BETWEEN %s AND %s", [ fromDate, toDate ])
+                cur.execute("SELECT id,customerID,accountID,accountType,amount,withdrawDate from withdraw where withdrawDate BETWEEN %s AND %s", [ fromDate, toDate ])
             elif(field == 'transfer'):
-                cur.execute("SELECT * from transaction where transactionDate BETWEEN %s AND %s", [ fromDate, toDate ])
+                cur.execute("SELECT id,customerID,amount,sourceaccountid,targetaccountid,transactionDate from transaction where transactionDate BETWEEN %s AND %s", [ fromDate, toDate ])
             check = cur.fetchall()
             if(check):
                 return jsonify(check)

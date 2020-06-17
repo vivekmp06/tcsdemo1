@@ -48,11 +48,11 @@ class WithdrawAmount(FlaskForm):
     WithdrawAmount = FloatField("TransferAmount", [validators.DataRequired(message="WithdrawAmount is Required"), validators.NumberRange(message='Minimum Rs.1', min=1) ])     
  
 class CreateExecutive(FlaskForm):
-    username      = StringField("username",   [ validators.DataRequired(message="Username is Required"), validators.Length(message='UserName should be Minimun 4 characters.',min=4) ] )
-    name          = StringField("name",       [validators.DataRequired(message="name  is Required")] )
-    address       = StringField("address",    [validators.DataRequired(message="address  is Required")] )
-    phone         = StringField("phone",      [validators.DataRequired(message="Mobile Number  is Required")] )
-    password      = PasswordField("password",   [ validators.DataRequired(message="Password is Required"), validators.Length(message='Password should be and 5 characters.',
+    username      = StringField("Username",   [ validators.DataRequired(message="Username is Required"), validators.Length(message='UserName should be Minimun 4 characters.',min=4) ] )
+    name          = StringField("Name",       [validators.DataRequired(message="name  is Required")] )
+    address       = StringField("Address",    [validators.DataRequired(message="address  is Required")] )
+    phone         = StringField("Phone",      [validators.DataRequired(message="Mobile Number  is Required")] )
+    password      = PasswordField("Password",   [ validators.DataRequired(message="Password is Required"), validators.Length(message='Password should be and 5 characters.',
                           min=5),validators.Regexp(message=' Password should contain 5 characters including one special character, one upper case, one numeric.',
                           regex=r'^(?=.*[A-Z])(?=.*\d)(?=.*[\W\_])[A-Za-z\d\W\_]{5,}$') ] )
     userlevel     = IntegerField("userlevel",  [validators.DataRequired(message="Userlevel is Required")])  
